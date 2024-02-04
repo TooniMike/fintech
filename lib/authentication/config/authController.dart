@@ -1,3 +1,5 @@
+// ignore_for_file: use_build_context_synchronously
+
 import 'dart:convert';
 import 'package:fintech/home_page.dart';
 import 'package:flutter/material.dart';
@@ -43,51 +45,56 @@ register(BuildContext context, String username, String email,
       // Declaration of LocalStorage and saving of email
       final prefs = await SharedPreferences.getInstance();
       prefs.setString('email', email);
+  final url = Uri.parse("https://crypto-wallet-server.mock.beeceptor.com/api/v1/register");
 
-      final response = await http.post(
-          Uri.parse(
-              'https://crypto-wallet-server.mock.beeceptor.com/register/api/v1/register'),
-          //Body params
-          body: jsonEncode({
-            'username': username,
-            'email': email,
-            'password': password,
-          }),
-          );
-      print(email);
+  try {
+    // Create a Map with the parameters
+    Map<String, String> body = {
+      'email': email,
+      'password': password,
+      'username': username,
+    };
 
-      if (response.statusCode == 201) {
-        if (response.body != null) {
-          print('Raw Response Body: ${response.body}');
-          final Map<String, dynamic> responseBody = json.decode(response.body);
-          if (responseBody.containsKey('message')) {
-            String message = responseBody['message'];
-            print('Message from response: $message');
-            alert(context, 'success', message);
+    // Encode the parameters to JSON
+    String jsonBody = json.encode(body);
+
+    // Make the POST request
+    final response = await http.post(
+      url,
+      headers: {
+        'Content-Type': 'application/json',
+      },
+      body: jsonBody,
+    );
+
+    // Check if the request was successful (status code 200)
+    if (response.statusCode == 200) {
+      alert(context, 'success', 'success');
             Navigator.of(context).push(
                             MaterialPageRoute(
                                 builder: (_) => const HomePage()),
                             );
-          } else {
-            alert(context, 'error',
-                'Response does not contain the "message" key');
-          }
-        } else {
-          alert(context, 'error', 'Response body is null');
-        }
-      } else {
-        print('Response Code: ${response.statusCode}');
-        print('Raw Response Body: ${response.body}');
-        alert(context, 'error', 'Unexpected response format');
-        Navigator.pop(context);
-      }
+      print('Registration successful!');
+      print('Response: ${response.body}');
     } else {
-      alert(context, 'error', 'Email domain is not allowed');
+      print('Failed to register. Status code: ${response.statusCode}');
+      print('Response: ${response.body}');
     }
-  } else {
-    alert(context, 'error', 'All fields are required');
-  }
+  } catch (error) {
+    print('Error: $error');
 }
+    }}}
+
+
+
+
+
+
+
+
+
+
+
 
 // login(BuildContext context, String email, String password,
 //     bool rememberMe) async {

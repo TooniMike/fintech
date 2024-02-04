@@ -12,7 +12,7 @@ class LoadingIcon extends StatelessWidget {
           height: 50,
           width: 50,
           child: CircularProgressIndicator(
-            color: Colors.blue,
+            color: Colors.blueAccent,
           )),
       Center(child: Image.asset('assets/images/gmail.png', width: 30)),
     ]);

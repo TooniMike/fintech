@@ -1,4 +1,6 @@
 import 'package:fintech/authentication/config/authController.dart';
+import 'package:fintech/authentication/login/login_page.dart';
+import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import '../../core/common/widgets/all_widgets.dart';
@@ -67,22 +69,29 @@ class _RegistrationPageState extends State<RegistrationPage> {
               Padding(
                 padding: const EdgeInsets.all(10.0),
                 child: RichText(
-                  text: const TextSpan(
-                    style: TextStyle(
+                  text: TextSpan(
+                    style: const TextStyle(
                       fontSize: 16,
                       fontWeight: FontWeight.normal,
                       color: Colors.black45,
                     ),
                     children: [
-                      TextSpan(
+                      const TextSpan(
                         text: "Have an account already? ",
                       ),
                       TextSpan(
                         text: "Log In",
-                        style: TextStyle(
+                        style: const TextStyle(
                           color: Color(0xFF17288E),
                           fontWeight: FontWeight.bold,
                         ),
+                        recognizer: TapGestureRecognizer()
+                        ..onTap = () {
+                          Navigator.of(context).push(
+                            MaterialPageRoute(
+                                builder: (_) => const LoginPage()),
+                            );
+                        },
                       ),
                     ],
                   ),
