@@ -141,12 +141,7 @@ class _RegistrationPageState extends State<RegistrationPage> {
                         ),
                       ),
                     ),
-               ), 
-                  Text(
-                      'Password must contain at least 8 characters long and contain one uppercase, lowercase, number, and symbol',
-                      style: TextStyle(color: Colors.red, fontSize: 12.sp),
-                    ),
-                  
+               ),                   
               const WhiteSpace(height: 40),
               GestureDetector(
                 onTap: () {
@@ -187,5 +182,6 @@ class _RegistrationPageState extends State<RegistrationPage> {
         ],
       ),
     ));
+  
   }
 }

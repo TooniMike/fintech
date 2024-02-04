@@ -10,10 +10,8 @@ import '../../core/common/widgets/all_widgets.dart';
 import '../utils/functions.dart';
 
 register(BuildContext context, String username, String email,
-     String password) async {
-  if (username.isNotEmpty &&
-      email.isNotEmpty &&
-      password.isNotEmpty) {
+    String password) async {
+  if (username.isNotEmpty && email.isNotEmpty && password.isNotEmpty) {
     //Check for email domain
     bool emailAllowed = checkEmailDomain(email);
 
@@ -45,45 +43,105 @@ register(BuildContext context, String username, String email,
       // Declaration of LocalStorage and saving of email
       final prefs = await SharedPreferences.getInstance();
       prefs.setString('email', email);
-  final url = Uri.parse("https://crypto-wallet-server.mock.beeceptor.com/api/v1/register");
+      final url = Uri.parse(
+          "https://crypto-wallet-server.mock.beeceptor.com/api/v1/register");
 
-  try {
-    // Create a Map with the parameters
-    Map<String, String> body = {
-      'email': email,
-      'password': password,
-      'username': username,
-    };
+      try {
+        // Create a Map with the parameters
+        Map<String, String> body = {
+          'email': email,
+          'password': password,
+          'username': username,
+        };
 
-    // Encode the parameters to JSON
-    String jsonBody = json.encode(body);
+        // Encode the parameters to JSON
+        String jsonBody = json.encode(body);
 
-    // Make the POST request
-    final response = await http.post(
-      url,
-      headers: {
-        'Content-Type': 'application/json',
-      },
-      body: jsonBody,
-    );
+        // Make the POST request
+        final response = await http.post(
+          url,
+          headers: {
+            'Content-Type': 'application/json',
+          },
+          body: jsonBody,
+        );
 
-    // Check if the request was successful (status code 200)
-    if (response.statusCode == 200) {
-      alert(context, 'success', 'success');
-            Navigator.of(context).push(
-                            MaterialPageRoute(
-                                builder: (_) => const HomePage()),
-                            );
-      print('Registration successful!');
-      print('Response: ${response.body}');
-    } else {
-      print('Failed to register. Status code: ${response.statusCode}');
-      print('Response: ${response.body}');
+        // Check if the request was successful (status code 200)
+        if (response.statusCode == 200) {
+          alert(context, 'success', 'success');
+          Navigator.of(context).push(
+            MaterialPageRoute(builder: (_) => const HomePage()),
+          );
+        } else {
+          alert(context, 'error', 'An error occured please try again later');
+        }
+      } catch (error) {
+        alert(context, 'error', 'An error occured please try again later');
+        Navigator.of(context).pop();
+      }
     }
-  } catch (error) {
-    print('Error: $error');
+  }
 }
-    }}}
+
+login(
+  BuildContext context,
+  String email,
+  String password,
+) async {
+  // try {
+  if (email != '' && password != '') {
+    bool emailAllowed = checkEmailDomain(email);
+    if (!emailAllowed) {
+      // Email domain check
+      alert(context, 'error', 'Email domain is not allowed');
+      return;
+    }
+
+    String? emailValidation = validateEmail(email);
+
+    if (emailValidation != null) {
+      // Email not valid
+      alert(context, 'error', 'Weak internet connection');
+      return;
+    }
+
+    progressIndicator(context, message: 'Authenticating');
+
+    final url = Uri.parse(
+        'https://crypto-wallet-server.mock.beeceptor.com/api/v1/login');
+    try {
+      Map<String, String> body = {
+        'email': email,
+        'password': password,
+      };
+
+      // Encode the parameters to JSON
+      String jsonBody = json.encode(body);
+
+      // Make the POST request
+      final response = await http.post(
+        url,
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: jsonBody,
+      );
+
+      if (response.statusCode == 200 || response.statusCode == 201) {
+        Navigator.of(context).push(
+          MaterialPageRoute(builder: (_) => const HomePage()),
+        );
+      } else {
+        alert(context, 'error', 'An error occured please try again later');
+      }
+    } catch (error) {
+      alert(context, 'error', 'Weak internet connection');
+      Navigator.of(context).pop();
+    }
+  }
+}
+
+
 
 
 

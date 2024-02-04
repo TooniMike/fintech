@@ -44,10 +44,7 @@ class CustomTextFormField extends StatelessWidget {
         focusNode: focusNode,
         onChanged: onChanged,
         autofocus: autofocus ?? false,
-        // validator: validator,
-        obscureText: obscureText ?? false,
-        validator: passwordValidation == true ? validatePassword : validator,
-        
+        obscureText: obscureText ?? false,        
         obscuringCharacter: '*',
         onEditingComplete: onEditingComplete,
         decoration: InputDecoration(
@@ -79,21 +76,5 @@ class CustomTextFormField extends StatelessWidget {
               
       ),
     );
-  }
-
-    String? validatePassword(String? value) {
-    if (value == null || value.isEmpty) {
-      return 'Password is required';
-    }
-
-    // Define your password requirements
-    final RegExp passwordRegex =
-        RegExp(r'^(?=.*[A-Z])(?=.*[0-9])(?=.*[!@#$%^&*(),.?":{}|<>]).{8,}$');
-
-    if (!passwordRegex.hasMatch(value)) {
-      return 'Password must be at least 8 characters long';
-    }
-
-    return null; // Password is valid
   }
 }

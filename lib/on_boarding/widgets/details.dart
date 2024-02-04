@@ -1,4 +1,4 @@
-import 'package:fintech/authentication/register/registration_page.dart';
+import 'package:fintech/authentication/login/login_page.dart';
 import 'package:fintech/core/common/widgets/white_space.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
@@ -46,7 +46,7 @@ class Details extends StatelessWidget {
               onTap: (){
                 Navigator.of(context).push(
                             MaterialPageRoute(
-                                builder: (_) => const RegistrationPage()),
+                                builder: (_) => const LoginPage()),
                             );
               },
               child: Container(

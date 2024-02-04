@@ -12,12 +12,8 @@ bool checkEmailDomain(String email) {
 String? validatePassword(String? value) {
   if (value == null || value.isEmpty) {
     return 'Password is required';
-  }
-  final RegExp passwordRegex =
-      RegExp(r'^(?=.*[A-Z])(?=.*[0-9])(?=.*[!@#$%^&*(),.?":{}|<>]).{8,}$');
-  if (!passwordRegex.hasMatch(value)) {
-    // return 'Password must be at least 8 characters long';
-    return 'Invalid password format';
+  } else if(value.length < 8){
+    return 'Password must be atleast 8 character';
   }
 
   return null; // Password is valid
