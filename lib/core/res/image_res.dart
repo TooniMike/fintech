@@ -31,4 +31,11 @@ class Assets{
   static const vec13 = 'assets/images/onboard_two/vec13.png';
   static const vec14 = 'assets/images/onboard_two/vec14.png';  
   static const vec15 = 'assets/images/onboard_two/vec15.png';  
+
+  // Money Request Assets
+  static const ell1 = 'assets/images/money_request/Ellipse 10.png';
+  static const ell2 = 'assets/images/money_request/Ellipse 11.png';
+  static const ell3 = 'assets/images/money_request/Ellipse 12.png';
+  static const vector = 'assets/images/money_request/Vector 36.png';
+
 }
