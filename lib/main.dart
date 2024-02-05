@@ -1,5 +1,4 @@
-import 'package:fintech/home_page.dart';
-import 'package:fintech/money_request.dart';
+import 'package:fintech/search_recipent.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
@@ -25,7 +24,7 @@ class MyApp extends StatelessWidget {
             useMaterial3: true,
           ),
           // home: const OnBoardingScreen(),
-          home: const MoneyRequest(),
+          home: const SearchRecipent(),
         );
       },
     );

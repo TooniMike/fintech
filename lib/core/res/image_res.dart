@@ -38,4 +38,15 @@ class Assets{
   static const ell3 = 'assets/images/money_request/Ellipse 12.png';
   static const vector = 'assets/images/money_request/Vector 36.png';
 
+  // Search 
+  static const ell13 = 'assets/images/search/Ellipse 13.png';
+  static const ell14 = 'assets/images/search/Ellipse 14.png';
+  static const ell15 = 'assets/images/search/Ellipse 15.png';
+  static const ell16 = 'assets/images/search/Ellipse 16.png';
+  static const ell20 = 'assets/images/search/Ellipse 20.png';
+  static const ell21 = 'assets/images/search/Ellipse 21.png';
+  static const ell22 = 'assets/images/search/Ellipse 22.png';
+  static const ell23 = 'assets/images/search/Ellipse 23.png';
+  static const ell24 = 'assets/images/search/Ellipse 24.png';
+
 }
