@@ -8,9 +8,4 @@ class AppColors {
   static const Color darkerBlue = Color(0xff152534);
   static const Color darkestBlue = Color(0xff0C1C2E);
 
-  static const List<Color> defaultGradient = [
-    darkBlue,
-    darkerBlue,
-    darkestBlue,
-  ];
 }

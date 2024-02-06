@@ -1,6 +1,6 @@
-import 'package:fintech/search_recipent.dart';
-import 'package:fintech/send_money.dart';
 import 'package:flutter/material.dart';
+
+import 'all_pages.dart';
 
 class SendAllMoney extends StatelessWidget {
   const SendAllMoney({super.key});

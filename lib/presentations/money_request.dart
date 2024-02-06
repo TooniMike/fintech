@@ -1,10 +1,9 @@
-import 'package:fintech/core/common/widgets/all_widgets.dart';
-import 'package:fintech/search_recipent.dart';
+import 'package:fintech/core/values/app_colors.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-
-import 'core/res/image_res.dart';
-import 'core/values/all_values.dart';
+import '../core/common_widgets/all_widgets.dart';
+import '../core/res/image_res.dart';
+import 'all_pages.dart';
 
 class MoneyRequest extends StatelessWidget {
   const MoneyRequest({super.key});

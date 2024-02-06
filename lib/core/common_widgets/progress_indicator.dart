@@ -36,7 +36,6 @@ class _OverlayWidgetState extends State<OverlayWidget> {
     return Scaffold(
       backgroundColor: Colors.transparent,
       body: PopScope(
-        // onWillPop: () async => true,
         canPop: false,
         child: Stack(
           children: [

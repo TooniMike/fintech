@@ -44,8 +44,8 @@ class _OnBoardingScreenState extends State<OnBoardingScreen> {
                   dotHeight: 8.h,
                   dotWidth: 36.w,
                   spacing: 10,
-                  dotColor: const Color.fromARGB(255, 248, 241, 173),
-                  activeDotColor: Colors.yellowAccent),
+                  dotColor: const Color(0xFFFDD590),
+                  activeDotColor: const Color(0xFFFFB129)),
             ),
           )
         ]),

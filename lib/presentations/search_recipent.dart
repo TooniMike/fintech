@@ -1,9 +1,9 @@
-import 'package:fintech/send_money2.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import '../core/common_widgets/all_widgets.dart';
+import '../core/res/image_res.dart';
+import 'all_pages.dart';
 
-import 'core/common/widgets/all_widgets.dart';
-import 'core/res/image_res.dart';
 
 class SearchRecipent extends StatelessWidget {
   const SearchRecipent({super.key});

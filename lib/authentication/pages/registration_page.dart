@@ -1,10 +1,9 @@
 import 'package:fintech/authentication/config/authController.dart';
-import 'package:fintech/authentication/login/login_page.dart';
+import 'package:fintech/authentication/pages/login_page.dart';
 import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-import '../../core/common/widgets/all_widgets.dart';
-import '../../core/common/widgets/custom_text_form_field.dart';
+import '../../core/common_widgets/all_widgets.dart';
 import '../utils/functions.dart';
 import '../utils/socials.dart';
 

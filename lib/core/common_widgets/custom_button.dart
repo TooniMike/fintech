@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_animate/flutter_animate.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 class CustomButton extends StatelessWidget {
@@ -34,6 +35,12 @@ class CustomButton extends StatelessWidget {
           ),
         ),
       ),
-    );
+    ).animate()
+            .slideY(
+                begin: 2,
+                end: 0,
+                delay: 1000.ms,
+                duration: 1100.ms,
+                curve: Curves.easeInOutCubic);
   }
 }

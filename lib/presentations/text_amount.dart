@@ -1,7 +1,9 @@
-import 'package:fintech/core/common/widgets/all_widgets.dart';
-import 'package:fintech/home_page.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+
+import '../core/common_widgets/all_widgets.dart';
+import 'all_pages.dart';
+
 
 class TextAmount extends StatefulWidget {
   const TextAmount({super.key});

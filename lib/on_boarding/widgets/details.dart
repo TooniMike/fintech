@@ -1,7 +1,8 @@
-import 'package:fintech/authentication/login/login_page.dart';
-import 'package:fintech/core/common/widgets/white_space.dart';
+import 'package:fintech/authentication/pages/login_page.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+
+import '../../core/common_widgets/all_widgets.dart';
 
 class Details extends StatelessWidget {
   final bool isFirstPage;

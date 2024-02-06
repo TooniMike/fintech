@@ -1,10 +1,9 @@
-import 'package:fintech/authentication/register/registration_page.dart';
+import 'package:fintech/authentication/pages/registration_page.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-import '../../core/common/widgets/all_widgets.dart';
-import '../../core/common/widgets/custom_text_form_field.dart';
 import 'package:fintech/authentication/config/authController.dart';
 import 'package:flutter/gestures.dart';
+import '../../core/common_widgets/all_widgets.dart';
 import '../utils/socials.dart';
 
 class LoginPage extends StatefulWidget {
@@ -20,7 +19,7 @@ class _LoginPageState extends State<LoginPage> {
   bool _obscurePassword1 = true;
 
    String? passwordValidationError;
-
+bool switchValue = false;
    final TextEditingController nameController = TextEditingController();
    final TextEditingController emailController = TextEditingController();
    final TextEditingController passwordController = TextEditingController();
@@ -119,6 +118,50 @@ class _LoginPageState extends State<LoginPage> {
                       ),
                     ),
                ), 
+               Row(
+                 children: [
+                   Transform.scale(
+                     scale: 0.7,
+                     child: Switch(
+                       value: switchValue,
+                       activeColor: Colors.green,
+                       inactiveTrackColor: const Color.fromARGB(255, 14, 13, 13),
+                       inactiveThumbColor: Colors.white,
+                       materialTapTargetSize: MaterialTapTargetSize.padded,
+                       trackOutlineColor: MaterialStateProperty
+                           .resolveWith(
+                               (states) => Colors.transparent),
+                       overlayColor: MaterialStateProperty.resolveWith(
+                               (states) => Colors.transparent),
+                       onChanged: (value) {
+                         setState(() {
+                           switchValue = value;
+                         });
+                         print(value);
+                       },
+                     ),
+                   ),
+                   const Text(
+                     "Remember me",
+                     style:
+                     TextStyle(fontSize: 14, fontWeight: FontWeight.bold),
+                   ),
+                   const Spacer(),
+                   const Text(
+                     "Forgot Password?",
+                     style: TextStyle(
+                       fontSize: 14,
+                       decoration: TextDecoration.none,
+                       fontWeight: FontWeight.bold,
+                       color: Colors.black,
+                     ),
+                   ),
+                   const SizedBox(
+                     height: 20,
+                   )
+                 ],
+               ),
+                  
                   
               const WhiteSpace(height: 40),
               GestureDetector(

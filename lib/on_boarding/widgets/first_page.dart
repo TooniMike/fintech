@@ -23,7 +23,7 @@ class FirstPage extends StatelessWidget {
           Positioned(
             top: 0.h,
             right: 0.w,
-            child: Image.asset(Assets.vector4),
+            child: Image.asset(Assets.vector4)
           ),
           Positioned(
             top: 20.h,
