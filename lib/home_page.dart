@@ -1,4 +1,6 @@
 import 'package:fintech/core/common/widgets/all_widgets.dart';
+import 'package:fintech/money_request.dart';
+import 'package:fintech/send_money2.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_vector_icons/flutter_vector_icons.dart';
@@ -87,14 +89,26 @@ class HomePage extends StatelessWidget {
                         const WhiteSpace(
                           height: 25,
                         ),
-                        const Row(
+                        Row(
                           mainAxisAlignment: MainAxisAlignment.spaceBetween,
                           children: [
                             CustomButton(
+                              onTap: () {
+                                Navigator.of(context).push(
+                                  MaterialPageRoute(
+                                      builder: (_) => const MoneyRequest()),
+                                );
+                              },
                               text: 'Request money',
                               isColorFilled: false,
                             ),
                             CustomButton(
+                              onTap: () {
+                                Navigator.of(context).push(
+                                  MaterialPageRoute(
+                                      builder: (_) => const SendAllMoney()),
+                                );
+                              },
                               text: 'Send money',
                               isColorFilled: false,
                             )
@@ -118,7 +132,8 @@ class HomePage extends StatelessWidget {
                         ),
                       ),
                       child: Padding(
-                        padding: EdgeInsets.only(top: 20.h, left: 10.w, right: 10.w),
+                        padding:
+                            EdgeInsets.only(top: 20.h, left: 10.w, right: 10.w),
                         child: Column(
                           children: [
                             Container(
@@ -241,7 +256,6 @@ class HomePage extends StatelessWidget {
                       ),
                     ),
                   )
-                
                 ],
               ),
             ),

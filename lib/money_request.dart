@@ -1,4 +1,5 @@
 import 'package:fintech/core/common/widgets/all_widgets.dart';
+import 'package:fintech/search_recipent.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
@@ -23,33 +24,38 @@ class MoneyRequest extends StatelessWidget {
               padding: EdgeInsets.symmetric(vertical: 20.h, horizontal: 10.w),
               child: Column(
                 children: [
-                  Row(
-                    children: [
-                      const Icon(
-                        Icons.arrow_back_ios,
-                        color: Colors.white,
-                      ),
-                      const WhiteSpace(
-                        width: 1,
-                      ),
-                      Expanded(
-                        child: Text(
-                          'Back',
-                          style:
-                              TextStyle(color: Colors.white, fontSize: 14.sp),
+                  GestureDetector(
+                    onTap: () {
+                      Navigator.of(context).pop();
+                    },
+                    child: Row(
+                      children: [
+                        const Icon(
+                          Icons.arrow_back_ios,
+                          color: Colors.white,
                         ),
-                      ),
-                      Expanded(
-                        child: Text(
-                          'New Request',
-                          style: TextStyle(
-                              color: Colors.white,
-                              fontSize: 16.sp,
-                              fontWeight: FontWeight.w400),
+                        const WhiteSpace(
+                          width: 1,
                         ),
-                      ),
-                      const Expanded(child: SizedBox())
-                    ],
+                        Expanded(
+                          child: Text(
+                            'Back',
+                            style:
+                                TextStyle(color: Colors.white, fontSize: 14.sp),
+                          ),
+                        ),
+                        Expanded(
+                          child: Text(
+                            'New Request',
+                            style: TextStyle(
+                                color: Colors.white,
+                                fontSize: 16.sp,
+                                fontWeight: FontWeight.w400),
+                          ),
+                        ),
+                        const Expanded(child: SizedBox())
+                      ],
+                    ),
                   ),
                   const WhiteSpace(
                     height: 60,
@@ -100,14 +106,23 @@ class MoneyRequest extends StatelessWidget {
                   const WhiteSpace(
                     height: 20,
                   ),
-                  const CustomButton(
+                  CustomButton(
+                    onTap: () {
+                      Navigator.of(context).push(
+                        MaterialPageRoute(
+                            builder: (_) => const SearchRecipent()),
+                      );
+                    },
                     text: 'Send money',
                     isColorFilled: true,
                   ),
                   const WhiteSpace(
                     height: 20,
                   ),
-                  const CustomButton(
+                  CustomButton(
+                    onTap: () {
+                      Navigator.of(context).pop();
+                    },
                     text: 'Don\'t send',
                     isColorFilled: false,
                   ),

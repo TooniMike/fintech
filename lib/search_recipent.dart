@@ -1,3 +1,4 @@
+import 'package:fintech/send_money2.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
@@ -11,55 +12,60 @@ class SearchRecipent extends StatelessWidget {
   Widget build(BuildContext context) {
     return SafeArea(
         child: Scaffold(
-      // backgroundColor: AppColors.primaryColor,
       backgroundColor: const Color(0xFF010A43),
       body: Column(
         children: [
           Padding(
             padding: EdgeInsets.symmetric(horizontal: 10.w).copyWith(top: 20.h),
-            child: Row(
-              children: [
-                const Icon(
-                  Icons.arrow_back_ios,
-                  color: Colors.white,
-                ),
-                const WhiteSpace(
-                  width: 1,
-                ),
-                Text(
-                  'Back',
-                  style: TextStyle(color: Colors.white, fontSize: 14.sp),
-                ),
-                const WhiteSpace(
-                  width: 30,
-                ),
-                Expanded(
-                  child: SizedBox(
-                    height: 50.h,
-                    child: TextField(
-                      onTapOutside: (event) => FocusScope.of(context).unfocus(),
-                      keyboardType: TextInputType.name,
-                      style: const TextStyle(color: Colors.white),
-                      decoration: InputDecoration(
-                          hintText: 'Search the Recipient',
-                          focusedBorder: OutlineInputBorder(
-                              borderRadius: BorderRadius.circular(15.0.r),
-                              borderSide:
-                                  const BorderSide(color: Colors.white)),
-                          enabledBorder: OutlineInputBorder(
-                              borderRadius: BorderRadius.circular(15.0.r),
-                              borderSide:
-                                  const BorderSide(color: Color(0xFF1DC7AC))),
-                          hintStyle: TextStyle(
-                            fontSize: 14.sp,
-                            color: Colors.white38,
-                          ),
-                          suffixIcon:
-                              const Icon(Icons.search, color: Colors.white)),
+            child: GestureDetector(
+              onTap: () {
+                Navigator.of(context).pop();
+              },
+              child: Row(
+                children: [
+                  const Icon(
+                    Icons.arrow_back_ios,
+                    color: Colors.white,
+                  ),
+                  const WhiteSpace(
+                    width: 1,
+                  ),
+                  Text(
+                    'Back',
+                    style: TextStyle(color: Colors.white, fontSize: 14.sp),
+                  ),
+                  const WhiteSpace(
+                    width: 30,
+                  ),
+                  Expanded(
+                    child: SizedBox(
+                      height: 50.h,
+                      child: TextField(
+                        onTapOutside: (event) =>
+                            FocusScope.of(context).unfocus(),
+                        keyboardType: TextInputType.name,
+                        style: const TextStyle(color: Colors.white),
+                        decoration: InputDecoration(
+                            hintText: 'Search the Recipient',
+                            focusedBorder: OutlineInputBorder(
+                                borderRadius: BorderRadius.circular(15.0.r),
+                                borderSide:
+                                    const BorderSide(color: Colors.white)),
+                            enabledBorder: OutlineInputBorder(
+                                borderRadius: BorderRadius.circular(15.0.r),
+                                borderSide:
+                                    const BorderSide(color: Color(0xFF1DC7AC))),
+                            hintStyle: TextStyle(
+                              fontSize: 14.sp,
+                              color: Colors.white38,
+                            ),
+                            suffixIcon:
+                                const Icon(Icons.search, color: Colors.white)),
+                      ),
                     ),
                   ),
-                ),
-              ],
+                ],
+              ),
             ),
           ),
           const WhiteSpace(height: 10),
@@ -146,19 +152,28 @@ class SearchRecipent extends StatelessWidget {
                     ),
                     Text(
                       'Adeleke Adeyanju',
-                      style: TextStyle(
-                          color: Colors.white,
-                          fontSize: 16.sp),
+                      style: TextStyle(color: Colors.white, fontSize: 16.sp),
                     ),
-                    const WhiteSpace(height: 5,),
+                    const WhiteSpace(
+                      height: 5,
+                    ),
                     Text(
                       '(+234)905 1694 275',
-                      style: TextStyle(
-                          color: Colors.white,
-                          fontSize: 13.sp),
+                      style: TextStyle(color: Colors.white, fontSize: 13.sp),
                     ),
-                    const WhiteSpace(height: 10,),
-                    const CustomButton(text: 'Continue', isColorFilled: true,)
+                    const WhiteSpace(
+                      height: 10,
+                    ),
+                    CustomButton(
+                      text: 'Continue',
+                      isColorFilled: true,
+                      onTap: () {
+                        Navigator.of(context).push(
+                          MaterialPageRoute(
+                              builder: (_) => const SendAllMoney()),
+                        );
+                      },
+                    )
                   ],
                 ),
               ),

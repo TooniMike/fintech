@@ -4,29 +4,33 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 class CustomButton extends StatelessWidget {
   final String text;
   final bool isColorFilled;
+  final void Function() onTap;
   const CustomButton(
-      {super.key, this.isColorFilled = true, required this.text});
+      {super.key, this.isColorFilled = true, required this.text, required this.onTap});
 
   @override
   Widget build(BuildContext context) {
-    return Container(
-      height: 60.h,
-      width: 150.w,
-      decoration: BoxDecoration(
-        color: isColorFilled ? const Color(0xFFFF2E63) : Colors.transparent,
-        borderRadius: BorderRadius.circular(10.r),
-        border: Border.all(
-          width: 2.h,
-          color: isColorFilled ? Colors.transparent : const Color(0xFF464E8A),
+    return GestureDetector(
+      onTap: onTap,
+      child: Container(
+        height: 60.h,
+        width: 150.w,
+        decoration: BoxDecoration(
+          color: isColorFilled ? const Color(0xFFFF2E63) : Colors.transparent,
+          borderRadius: BorderRadius.circular(10.r),
+          border: Border.all(
+            width: 2.h,
+            color: isColorFilled ? Colors.transparent : const Color(0xFF464E8A),
+          ),
         ),
-      ),
-      child: Center(
-        child: Text(
-          text,
-          style: TextStyle(
-            color: isColorFilled ? Colors.white : const Color(0xFF464E8A),
-            fontSize: 16.sp,
-            fontWeight: FontWeight.w500
+        child: Center(
+          child: Text(
+            text,
+            style: TextStyle(
+              color: isColorFilled ? Colors.white : const Color(0xFF464E8A),
+              fontSize: 16.sp,
+              fontWeight: FontWeight.w500
+            ),
           ),
         ),
       ),
