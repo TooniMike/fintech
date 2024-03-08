@@ -1,12 +1,12 @@
 import 'package:fintech/authentication/config/model.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_animate/flutter_animate.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_vector_icons/flutter_vector_icons.dart';
 import 'package:get/get.dart';
 import '../authentication/config/home_controller.dart';
 import '../core/common_widgets/all_widgets.dart';
 import 'all_pages.dart';
-
 
 class HomePage extends GetWidget<HomeController> {
   const HomePage({super.key});
@@ -88,7 +88,8 @@ class HomePage extends GetWidget<HomeController> {
                               builder: (context, snapshot) {
                                 if (snapshot.connectionState ==
                                     ConnectionState.waiting) {
-                                  return const MotionLoading();
+                                  return const CircularProgressIndicator();
+                                  // MotionLoading()
                                 } else if (snapshot.hasError) {
                                   return Center(
                                     child: Text('Error: ${snapshot.error}'),
@@ -104,18 +105,25 @@ class HomePage extends GetWidget<HomeController> {
                                         UserBalanceModel details =
                                             snapshot.data!;
                                         return Text(
-                                          '${details.currency} ${details.balance.toString()}',
-                                          style: TextStyle(
-                                              color: Colors.white,
-                                              fontSize: 32.sp,
-                                              fontWeight: FontWeight.bold),
-                                        );
+                                                '${details.currency} ${details.balance.toString()}',
+                                                style: TextStyle(
+                                                    color: Colors.white,
+                                                    fontSize: 32.sp,
+                                                    fontWeight:
+                                                        FontWeight.bold))
+                                            .animate()
+                                            .scaleXY(
+                                                begin: 0,
+                                                end: 1,
+                                                delay: 10.ms,
+                                                duration: 1100.ms,
+                                                curve: Curves.easeInOutCubic);
                                       });
                                 }
                               }),
                         ),
                         const WhiteSpace(
-                          height: 25,
+                          height: 50,
                         ),
                         Row(
                           mainAxisAlignment: MainAxisAlignment.spaceBetween,
@@ -143,7 +151,7 @@ class HomePage extends GetWidget<HomeController> {
                           ],
                         ),
                         const WhiteSpace(
-                          height: 25,
+                          height: 70,
                         ),
                       ],
                     ),
@@ -211,7 +219,7 @@ class HomePage extends GetWidget<HomeController> {
                               ],
                             ),
                             const WhiteSpace(
-                              height: 30,
+                              height: 20,
                             ),
                             Expanded(
                               child: FutureBuilder<List<TransactionsModel>>(
@@ -235,96 +243,105 @@ class HomePage extends GetWidget<HomeController> {
                                     } else if (!snapshot.hasData ||
                                         snapshot.data!.isEmpty) {
                                       return const Center(
-                                        child: Text('No transaction available.'),
+                                        child:
+                                            Text('No transaction available.'),
                                       );
                                     } else {
                                       return ListView.builder(
                                           scrollDirection: Axis.vertical,
                                           itemCount: snapshot.data!.length,
                                           padding: EdgeInsets.symmetric(
-                                              vertical: 10.h).copyWith(top: 20.h),
+                                                  vertical: 10.h)
+                                              .copyWith(top: 20.h),
                                           itemBuilder: (context, index) {
-                                            TransactionsModel transactions = 
+                                            TransactionsModel transactions =
                                                 snapshot.data![index];
-                                            return Row(
-                                              children: [
-                                                CircleAvatar(
-                                                  radius: 25.r,
-                                                  backgroundImage: const AssetImage(
-                                                      'assets/images/sender.png'),
-                                                ),
-                                                const WhiteSpace(
-                                                  width: 10,
-                                                ),
-                                                Column(
-                                                  crossAxisAlignment:
-                                                      CrossAxisAlignment.start,
-                                                  children: [
-                                                    Text(
-                                                      'Adeboye Usman',
-                                                      style: TextStyle(
-                                                          color: const Color(
-                                                              0xFF858EC5),
-                                                          fontWeight:
-                                                              FontWeight.w500,
-                                                          fontSize: 18.sp),
-                                                    ),
-                                                    const WhiteSpace(
-                                                      height: 5,
-                                                    ),
-                                                    Container(
-                                                      width: 105.w,
-                                                      height: 25.h,
-                                                      decoration: BoxDecoration(
-                                                          color: const Color(
-                                                              0xFF1DC7AC),
-                                                          borderRadius:
-                                                              BorderRadius
-                                                                  .circular(
-                                                                      20.r)),
-                                                      child: Center(
-                                                        child: Padding(
-                                                          padding: EdgeInsets
-                                                              .symmetric(
-                                                                  horizontal:
-                                                                      5.w),
-                                                          child: Row(
-                                                            children: [
-                                                              const Icon(
-                                                                Icons
-                                                                    .av_timer_sharp,
-                                                                color:
-                                                                    Colors.white,
-                                                              ),
-                                                              const WhiteSpace(
-                                                                width: 5,
-                                                              ),
-                                                              Text(
-                                                                transactions.type!,
-                                                                style: TextStyle(
-                                                                    color: Colors
-                                                                        .white,
-                                                                    fontSize:
-                                                                        14.sp),
-                                                              ),
-                                                            ],
+                                            return Padding(
+                                              padding: const EdgeInsets.only(
+                                                  bottom: 20),
+                                              child: Row(
+                                                children: [
+                                                  CircleAvatar(
+                                                    radius: 25.r,
+                                                    backgroundImage:
+                                                        const AssetImage(
+                                                            'assets/images/sender.png'),
+                                                  ),
+                                                  const WhiteSpace(
+                                                    width: 10,
+                                                  ),
+                                                  Column(
+                                                    crossAxisAlignment:
+                                                        CrossAxisAlignment
+                                                            .start,
+                                                    children: [
+                                                      Text(
+                                                        'Adeboye Usman',
+                                                        style: TextStyle(
+                                                            color: const Color(
+                                                                0xFF858EC5),
+                                                            fontWeight:
+                                                                FontWeight.w500,
+                                                            fontSize: 18.sp),
+                                                      ),
+                                                      const WhiteSpace(
+                                                        height: 5,
+                                                      ),
+                                                      Container(
+                                                        width: 105.w,
+                                                        height: 25.h,
+                                                        decoration: BoxDecoration(
+                                                            color: const Color(
+                                                                0xFF1DC7AC),
+                                                            borderRadius:
+                                                                BorderRadius
+                                                                    .circular(
+                                                                        20.r)),
+                                                        child: Center(
+                                                          child: Padding(
+                                                            padding: EdgeInsets
+                                                                .symmetric(
+                                                                    horizontal:
+                                                                        5.w),
+                                                            child: Row(
+                                                              children: [
+                                                                const Icon(
+                                                                  Icons
+                                                                      .av_timer_sharp,
+                                                                  color: Colors
+                                                                      .white,
+                                                                ),
+                                                                const WhiteSpace(
+                                                                  width: 5,
+                                                                ),
+                                                                Text(
+                                                                  transactions
+                                                                      .type!,
+                                                                  style: TextStyle(
+                                                                      color: Colors
+                                                                          .white,
+                                                                      fontSize:
+                                                                          14.sp),
+                                                                ),
+                                                              ],
+                                                            ),
                                                           ),
                                                         ),
-                                                      ),
-                                                    )
-                                                  ],
-                                                ),
-                                                const Spacer(),
-                                                Text(
-                                                  "${transactions.currency} ${transactions.amount.toString()}",
-                                                  style: TextStyle(
-                                                      color:
-                                                          const Color(0xFF1DC7AC),
-                                                      fontSize: 20.sp,
-                                                      fontWeight:
-                                                          FontWeight.bold),
-                                                ),
-                                              ],
+                                                      )
+                                                    ],
+                                                  ),
+                                                  const Spacer(),
+                                                  Text(
+                                                    "${transactions.currency} ${transactions.amount.toString()}",
+                                                    style: TextStyle(
+                                                        color: const Color(
+                                                            0xFF1DC7AC),
+                                                        fontSize: 20.sp,
+                                                        fontWeight:
+                                                            FontWeight.bold),
+                                                  ),
+                                                ],
+                                              ),
                                             );
                                           });
                                     }

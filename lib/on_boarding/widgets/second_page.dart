@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_animate/flutter_animate.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 import '../../core/res/image_res.dart';
@@ -51,7 +52,12 @@ class SecondPage extends StatelessWidget {
           Positioned(
             top: 225.h,
             right: 105.w,
-            child: Image.asset(Assets.vec8),
+            child: Image.asset(Assets.vec8).animate().scaleXY(
+                begin: 0,
+                end: 1,
+                delay: 500.ms,
+                duration: 1100.ms,
+                curve: Curves.easeInOutCubic),
           ),
           Positioned(
             top: 350.h,
@@ -61,30 +67,55 @@ class SecondPage extends StatelessWidget {
           Positioned(
             top: 155.h,
             left: 0.w,
-            child: Image.asset(Assets.vec7),
+            child: Image.asset(Assets.vec7).animate().slideX(
+                begin: -2,
+                end: 0,
+                delay: 500.ms,
+                duration: 1000.ms,
+                curve: Curves.easeInOutCubic),
           ),
           Positioned(
             top: 225.h,
             left: 0.w,
-            child: Image.asset(Assets.vec6),
+            child: Image.asset(Assets.vec6).animate().slideX(
+                begin: -2,
+                end: 0,
+                delay: 800.ms,
+                duration: 1000.ms,
+                curve: Curves.easeInOutCubic),
           ),
           Positioned(
             height: 80.h,
             top: 370.h,
             right: 0.w,
-            child: Image.asset(Assets.vec5),
+            child: Image.asset(Assets.vec5).animate().slideX(
+                begin: 2,
+                end: 0,
+                delay: 800.ms,
+                duration: 1000.ms,
+                curve: Curves.easeInOutCubic),
           ),
           Positioned(
             height: 40.h,
             top: 385.h,
             right: 22.w,
-            child: Image.asset(Assets.vec4),
+            child: Image.asset(Assets.vec4).animate().scaleXY(
+                begin: 0,
+                end: 1,
+                delay: 500.ms,
+                duration: 1100.ms,
+                curve: Curves.easeInOutCubic),
           ),
           Positioned(
             height: 20.h,
             top: 395.h,
             right: 32.w,
-            child: Image.asset(Assets.vec3),
+            child: Image.asset(Assets.vec3).animate().scaleXY(
+                begin: 0,
+                end: 1,
+                delay: 900.ms,
+                duration: 1100.ms,
+                curve: Curves.easeInOutCubic),
           ),
           const Positioned(
             bottom: 0,

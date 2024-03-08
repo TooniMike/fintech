@@ -1,5 +1,6 @@
 import 'package:fintech/core/values/app_colors.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_animate/flutter_animate.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import '../core/common_widgets/all_widgets.dart';
 import '../core/res/image_res.dart';
@@ -61,15 +62,32 @@ class MoneyRequest extends StatelessWidget {
                   ),
                   Stack(
                     children: [
-                      Image.asset(Assets.ell3),
+                      Image.asset(Assets.ell3).animate().scaleXY(
+                          begin: 0,
+                          end: 1,
+                          delay: 200.ms,
+                          duration: 1100.ms,
+                          curve: Curves.easeInOutCubic),
                       Positioned(
-                          top: 25.h,
-                          left: 25.w,
-                          child: Image.asset(Assets.ell2)),
+                        top: 25.h,
+                        left: 25.w,
+                        child: Image.asset(Assets.ell2).animate().scaleXY(
+                            begin: 0,
+                            end: 1,
+                            delay: 400.ms,
+                            duration: 1100.ms,
+                            curve: Curves.easeInOutCubic),
+                      ),
                       Positioned(
-                          top: 50.h,
-                          left: 50.w,
-                          child: Image.asset(Assets.ell1))
+                        top: 50.h,
+                        left: 50.w,
+                        child: Image.asset(Assets.ell1).animate().scaleXY(
+                            begin: 0,
+                            end: 1,
+                            delay: 800.ms,
+                            duration: 1100.ms,
+                            curve: Curves.easeInOutCubic),
+                      )
                     ],
                   ),
                   const WhiteSpace(
@@ -81,7 +99,12 @@ class MoneyRequest extends StatelessWidget {
                         color: Colors.white,
                         fontSize: 25.sp,
                         fontWeight: FontWeight.w500),
-                  ),
+                  ).animate().scaleXY(
+                begin: 0,
+                end: 1,
+                delay: 100.ms,
+                duration: 1000.ms,
+                curve: Curves.easeInOutCubic),
                   const WhiteSpace(
                     height: 20,
                   ),
@@ -101,7 +124,12 @@ class MoneyRequest extends StatelessWidget {
                         color: Colors.white,
                         fontSize: 32.sp,
                         fontWeight: FontWeight.bold),
-                  ),
+                  ).animate().slideY(
+                      begin: 2,
+                      end: 0,
+                      delay: 500.ms,
+                      duration: 1100.ms,
+                      curve: Curves.easeInOutCubic),
                   const WhiteSpace(
                     height: 20,
                   ),

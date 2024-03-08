@@ -39,7 +39,7 @@ class CustomButton extends StatelessWidget {
             .slideY(
                 begin: 2,
                 end: 0,
-                delay: 1000.ms,
+                delay: 500.ms,
                 duration: 1100.ms,
                 curve: Curves.easeInOutCubic);
   }
