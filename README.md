@@ -14,6 +14,6 @@ In order to run the application, make sure you are in the `packages/fintech` dir
 - After successfully running flutter pub get, you can start running the app on an emulator(F5).
 - If any error presist after doing the process above, you can kindly contact me.
 
-
+***
 
 
